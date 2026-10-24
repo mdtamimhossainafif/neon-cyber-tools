@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b14">
+<meta name="description" content="Neon Cyber Tools — Developer projects and useful web tools.">
+<title>NEON CYBER | Tools & Projects</title>
+
+<style>
+:root {
+  --bg: #080b14;
+  --panel: #101726;
+  --cyan: #00f5ff;
+  --purple: #a855f7;
+  --text: #edf7ff;
+  --muted: #9baac0;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, sans-serif;
+}
+header {
+  padding: 22px 7%;
+  border-bottom: 1px solid #1d3446;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.logo {
+  font-size: 21px;
+  font-weight: 900;
+  color: var(--cyan);
+  text-shadow: 0 0 14px #00f5ff66;
+}
+header a { color: var(--text); text-decoration: none; }
+.hero {
+  text-align: center;
+  padding: 75px 20px 48px;
+  background: radial-gradient(ellipse at top, #102b45, transparent 70%);
+}
+.tag {
+  color: var(--cyan);
+  letter-spacing: 3px;
+  font-size: 12px;
+}
+h1 {
+  font-size: clamp(34px, 7vw, 62px);
+  margin: 18px 0;
+  line-height: 1.15;
+}
+h1 span { color: var(--cyan); }
+.hero p { color: var(--muted); line-height: 1.8; }
+.search {
+  display: block;
+  width: min(480px, 100%);
+  margin: 25px auto 0;
+  padding: 15px 18px;
+  color: white;
+  background: #0c1422;
+  border: 1px solid #244357;
+  border-radius: 12px;
+  outline: none;
+  font-size: 15px;
+}
+.search:focus { border-color: var(--cyan); }
+main { max-width: 1100px; margin: auto; padding: 25px 20px 65px; }
+.section-title { margin: 20px 0 24px; }
+.section-title h2 { margin-bottom: 7px; }
+.section-title p { color: var(--muted); font-size: 14px; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 235px), 1fr));
+  gap: 18px;
+}
+.card {
+  padding: 23px;
+  background: linear-gradient(145deg, #121c2c, #0c111d);
+  border: 1px solid #24354a;
+  border-radius: 16px;
+  transition: .2s;
+}
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--cyan);
+  box-shadow: 0 0 22px #00f5ff14;
+}
+.icon { font-size: 29px; }
+.card h3 { margin: 14px 0 8px; }
+.card p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+  min-height: 48px;
+}
+.card button {
+  width: 100%;
+  padding: 11px;
+  background: #102a38;
+  border: 1px solid #00b9c8;
+  border-radius: 9px;
+  color: var(--cyan);
+  cursor: pointer;
+  font-size: 14px;
+}
+.card button:hover { background: #153b4b; }
+.notice {
+  margin-top: 30px;
+  padding: 18px;
+  border-left: 3px solid var(--purple);
+  background: #171326;
+  color: #d8c9f8;
+  font-size: 14px;
+  line-height: 1.8;
+}
+footer {
+  text-align: center;
+  padding: 28px 15px;
+  border-top: 1px solid #1d3446;
+  color: var(--muted);
+  font-size: 13px;
+}
+[hidden] { display: none !important; }
+</style>
+</head>
+
+<body>
+<header>
+  <div class="logo">NEON_CYBER<span>_</span></div>
+  <a href="#tools">Explore Tools ↘</a>
+</header>
+
+<section class="hero">
+  <div class="tag">DEVELOP • EXPLORE • CREATE</div>
+  <h1>Your Cyber <span>Workspace</span></h1>
+  <p>Developer projects, useful tools and creative experiments.<br>
+  একটি জায়গায় তোমার প্রয়োজনীয় ওয়েব টুলস।</p>
+  <input id="search" class="search" type="search"
+    placeholder="Search tools..." aria-label="Search tools">
+</section>
+
+<main id="tools">
+  <div class="section-title">
+    <h2>⚡ Explore Tools</h2>
+    <p>তোমার ডিজিটাল ওয়ার্কস্পেস — আরও টুলস পরে যোগ করতে পারবে।</p>
+  </div>
+
+  <div class="grid" id="grid">
+    <article class="card" data-search="password generator security">
+      <div class="icon">🔐</div>
+      <h3>Password Generator</h3>
+      <p>নিরাপদ ও র‍্যান্ডম পাসওয়ার্ড তৈরি করার টুল।</p>
+      <button onclick="openTool('password')">Open Tool ↗</button>
+    </article>
+
+    <article class="card" data-search="text counter writing words">
+      <div class="icon">📝</div>
+      <h3>Text Counter</h3>
+      <p>লেখার অক্ষর, শব্দ ও দৈর্ঘ্য হিসাব করো।</p>
+      <button onclick="openTool('text')">Open Tool ↗</button>
+    </article>
+
+    <article class="card" data-search="developer projects portfolio">
+      <div class="icon">💻</div>
+      <h3>My Projects</h3>
+      <p>নিজের কোডিং প্রজেক্ট ও কাজের পরিচিতি।</p>
+      <button onclick="openTool('projects')">Explore ↗</button>
+    </article>
+
+    <article class="card" data-search="network learning cyber security">
+      <div class="icon">🌐</div>
+      <h3>Cyber Learning</h3>
+      <p>নেটওয়ার্কিং ও সাইবার নিরাপত্তা শেখার নোট।</p>
+      <button onclick="openTool('learning')">Explore ↗</button>
+    </article>
+  </div>
+
+  <p id="empty" hidden>কোনো টুল পাওয়া যায়নি। অন্য শব্দ দিয়ে খোঁজ করো।</p>
+
+  <div class="notice">
+    <strong>⚠️ Security First</strong><br>
+    এই সাইটটি শেখা ও বৈধ ডেভেলপমেন্টের জন্য।
+    এখানে কোনো অনুমতিহীন অ্যাক্সেস বা মেসেজ স্প্যামিং ফিচার নেই।
+  </div>
+</main>
+
+<footer>
+  © <span id="year"></span> NEON CYBER • Built for learning
+</footer>
+
+<script>
+document.getElementById('year').textContent =
+  new Date().getFullYear();
+
+const search = document.getElementById('search');
+const cards = [...document.querySelectorAll('.card')];
+
+search.addEventListener('input', () => {
+  const query = search.value.toLowerCase().trim();
+  let count = 0;
+
+  cards.forEach(card => {
+    const match = (
+      card.innerText + ' ' + card.dataset.search
+    ).toLowerCase().includes(query);
+
+    card.hidden = !match;
+    if (match) count++;
+  });
+
+  document.getElementById('empty').hidden = count !== 0;
+});
+
+function openTool(name) {
+  if (name === 'password') {
+    const chars =
+      'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%';
+    const values = new Uint32Array(20);
+    crypto.getRandomValues(values);
+
+    const password = Array.from(values,
+      value => chars[value % chars.length]).join('');
+
+    alert('Demo password (20 characters):\n' + password);
+  } else if (name === 'text') {
+    const text = prompt('এখানে তোমার লেখা পেস্ট করো:');
+    if (text !== null) {
+      const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+      alert(
+        'Characters: ' + text.length +
+        '\nWords: ' + words
+      );
+    }
+  } else if (name === 'projects') {
+    alert('তোমার প্রজেক্টের লিংক এখানে যোগ করবে।');
+  } else if (name === 'learning') {
+    alert('এখানে তোমার সাইবার সিকিউরিটি শেখার নোট যোগ করবে।');
+  }
+}
+</script>
+</body>
+</html>
