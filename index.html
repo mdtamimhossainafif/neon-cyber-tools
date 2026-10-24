@@ -1,247 +1,237 @@
-<!DOCTYPE html>
-<html lang="bn">
+<!doctype html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080b14">
-<meta name="description" content="Neon Cyber Tools — Developer projects and useful web tools.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#070b18">
+<meta name="description" content="NEON CYBER — useful browser tools, coding projects, and ethical cybersecurity learning by MD Tamim Hossain Afif.">
 <title>NEON CYBER | Tools & Projects</title>
-
 <style>
-:root {
-  --bg: #080b14;
-  --panel: #101726;
-  --cyan: #00f5ff;
-  --purple: #a855f7;
-  --text: #edf7ff;
-  --muted: #9baac0;
-}
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: system-ui, sans-serif;
-}
-header {
-  padding: 22px 7%;
-  border-bottom: 1px solid #1d3446;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-.logo {
-  font-size: 21px;
-  font-weight: 900;
-  color: var(--cyan);
-  text-shadow: 0 0 14px #00f5ff66;
-}
-header a { color: var(--text); text-decoration: none; }
-.hero {
-  text-align: center;
-  padding: 75px 20px 48px;
-  background: radial-gradient(ellipse at top, #102b45, transparent 70%);
-}
-.tag {
-  color: var(--cyan);
-  letter-spacing: 3px;
-  font-size: 12px;
-}
-h1 {
-  font-size: clamp(34px, 7vw, 62px);
-  margin: 18px 0;
-  line-height: 1.15;
-}
-h1 span { color: var(--cyan); }
-.hero p { color: var(--muted); line-height: 1.8; }
-.search {
-  display: block;
-  width: min(480px, 100%);
-  margin: 25px auto 0;
-  padding: 15px 18px;
-  color: white;
-  background: #0c1422;
-  border: 1px solid #244357;
-  border-radius: 12px;
-  outline: none;
-  font-size: 15px;
-}
-.search:focus { border-color: var(--cyan); }
-main { max-width: 1100px; margin: auto; padding: 25px 20px 65px; }
-.section-title { margin: 20px 0 24px; }
-.section-title h2 { margin-bottom: 7px; }
-.section-title p { color: var(--muted); font-size: 14px; }
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 235px), 1fr));
-  gap: 18px;
-}
-.card {
-  padding: 23px;
-  background: linear-gradient(145deg, #121c2c, #0c111d);
-  border: 1px solid #24354a;
-  border-radius: 16px;
-  transition: .2s;
-}
-.card:hover {
-  transform: translateY(-4px);
-  border-color: var(--cyan);
-  box-shadow: 0 0 22px #00f5ff14;
-}
-.icon { font-size: 29px; }
-.card h3 { margin: 14px 0 8px; }
-.card p {
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.7;
-  min-height: 48px;
-}
-.card button {
-  width: 100%;
-  padding: 11px;
-  background: #102a38;
-  border: 1px solid #00b9c8;
-  border-radius: 9px;
-  color: var(--cyan);
-  cursor: pointer;
-  font-size: 14px;
-}
-.card button:hover { background: #153b4b; }
-.notice {
-  margin-top: 30px;
-  padding: 18px;
-  border-left: 3px solid var(--purple);
-  background: #171326;
-  color: #d8c9f8;
-  font-size: 14px;
-  line-height: 1.8;
-}
-footer {
-  text-align: center;
-  padding: 28px 15px;
-  border-top: 1px solid #1d3446;
-  color: var(--muted);
-  font-size: 13px;
-}
-[hidden] { display: none !important; }
+:root{color-scheme:dark;--bg:#070b18;--panel:#0e1628;--panel2:#111d34;--text:#eef5ff;--muted:#a8b7d1;--cyan:#48f4ff;--purple:#b16cff;--pink:#ff5ec4;--line:rgba(100,220,255,.2);--shadow:0 0 28px rgba(72,244,255,.08)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at 15% 0%,rgba(31,91,153,.22),transparent 40%),radial-gradient(ellipse at 90% 20%,rgba(131,45,174,.17),transparent 35%),var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
+a{color:var(--cyan);text-decoration:none}
+a:hover{text-decoration:underline}
+button,input,textarea{font:inherit}
+button,.btn{border:1px solid rgba(72,244,255,.38);border-radius:12px;background:linear-gradient(120deg,rgba(72,244,255,.14),rgba(177,108,255,.16));color:var(--text);padding:10px 14px;cursor:pointer;transition:transform .2s,border-color .2s,box-shadow .2s}
+button:hover,.btn:hover{transform:translateY(-2px);border-color:var(--cyan);box-shadow:0 0 18px rgba(72,244,255,.13)}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.wrap{width:min(1080px,calc(100% - 30px));margin:auto}
+header{position:sticky;top:0;z-index:5;background:rgba(7,11,24,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:68px}
+.brand{font-weight:900;letter-spacing:1.2px;color:var(--text)}
+.brand span{color:var(--cyan);text-shadow:0 0 16px rgba(72,244,255,.5)}
+nav{display:flex;flex-wrap:wrap;gap:16px;font-size:.92rem}
+nav a{color:var(--muted)}
+nav a:hover{color:var(--cyan)}
+.hero{padding:76px 0 48px;position:relative;overflow:hidden}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 11px;border:1px solid var(--line);border-radius:999px;color:var(--cyan);background:rgba(72,244,255,.06);font-size:.82rem}
+.dot{width:7px;height:7px;border-radius:50%;background:#67ffad;box-shadow:0 0 12px #67ffad}
+h1{font-size:clamp(2.5rem,9vw,5.3rem);line-height:1.03;letter-spacing:-2px;margin:20px 0 16px}
+.gradient{background:linear-gradient(95deg,var(--cyan),#8aabff,var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:660px;color:var(--muted);font-size:1.08rem}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.section{padding:34px 0}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:18px}
+h2{font-size:clamp(1.5rem,5vw,2.1rem);margin:0}
+.sub{color:var(--muted);margin:4px 0 0}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card{background:linear-gradient(150deg,rgba(17,29,52,.92),rgba(10,16,31,.96));border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow);transition:transform .25s,border-color .25s;animation:rise .6s both}
+.card:hover{transform:translateY(-4px);border-color:rgba(72,244,255,.55)}
+.card h3{margin:8px 0 6px;font-size:1.08rem}
+.card p{color:var(--muted);font-size:.94rem;margin:0 0 14px}
+.icon{font-size:1.5rem}
+.toolbox{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.tool{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px;min-width:0}
+.tool h3{margin:0 0 6px}
+.tool p{color:var(--muted);margin:0 0 12px;font-size:.92rem}
+.field{width:100%;background:#070d1c;color:var(--text);border:1px solid rgba(168,183,209,.25);border-radius:10px;padding:11px;margin:7px 0}
+textarea.field{min-height:100px;resize:vertical}
+.tool-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.output{overflow-wrap:anywhere;white-space:pre-wrap;background:#070d1c;border:1px dashed var(--line);padding:10px;border-radius:10px;min-height:42px;margin-top:10px;color:#b9ffea}
+.count{color:var(--cyan);font-variant-numeric:tabular-nums}
+.about{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}
+.panel{padding:22px;background:var(--panel);border:1px solid var(--line);border-radius:18px}
+.profile{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+.avatar{width:62px;height:62px;flex:0 0 62px;display:grid;place-items:center;border-radius:18px;background:linear-gradient(135deg,rgba(72,244,255,.25),rgba(177,108,255,.35));border:1px solid var(--line);font-weight:900;font-size:1.2rem;color:var(--cyan)}
+.meta{color:var(--muted);font-size:.92rem}
+.contact-row{padding:11px 0;border-bottom:1px solid var(--line);overflow-wrap:anywhere}
+.contact-row:last-child{border-bottom:0}
+footer{margin-top:34px;border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-size:.9rem}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease}
+.reveal.visible{opacity:1;transform:none}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{text-shadow:0 0 12px rgba(72,244,255,.18)}50%{text-shadow:0 0 25px rgba(72,244,255,.55)}}
+.brand span{animation:pulse 3s infinite}
+@media(max-width:760px){.nav{align-items:flex-start;flex-direction:column;padding:12px 0}.nav nav{gap:12px}.hero{padding:52px 0 32px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.about{grid-template-columns:1fr}}
+@media(max-width:520px){.wrap{width:min(100% - 22px,1080px)}.grid,.toolbox{grid-template-columns:1fr}.card,.tool{padding:16px}.section{padding:25px 0}h1{letter-spacing:-1.4px}.section-head{align-items:flex-start;flex-direction:column}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
-
 <body>
 <header>
-  <div class="logo">NEON_CYBER<span>_</span></div>
-  <a href="#tools">Explore Tools ↘</a>
+  <div class="wrap nav">
+    <a class="brand" href="#home" aria-label="NEON CYBER home">NEON <span>CYBER</span></a>
+    <nav aria-label="Main navigation">
+      <a href="#tools">Tools</a><a href="#projects">Projects</a><a href="#about">About</a><a href="#contact">Contact</a>
+    </nav>
+  </div>
 </header>
 
-<section class="hero">
-  <div class="tag">DEVELOP • EXPLORE • CREATE</div>
-  <h1>Your Cyber <span>Workspace</span></h1>
-  <p>Developer projects, useful tools and creative experiments.<br>
-  একটি জায়গায় তোমার প্রয়োজনীয় ওয়েব টুলস।</p>
-  <input id="search" class="search" type="search"
-    placeholder="Search tools..." aria-label="Search tools">
-</section>
+<main id="home">
+  <section class="hero wrap">
+    <div class="eyebrow"><span class="dot"></span> LEARN • BUILD • EXPLORE</div>
+    <h1>Welcome to<br><span class="gradient">NEON CYBER</span></h1>
+    <p>A personal hub for useful browser tools, coding experiments, Android learning, and responsible cybersecurity education. Built by MD Tamim Hossain Afif.</p>
+    <div class="actions">
+      <a class="btn" href="#tools">Explore Tools ↘</a>
+      <a class="btn" href="#about">Meet the Creator</a>
+    </div>
+  </section>
 
-<main id="tools">
-  <div class="section-title">
-    <h2>⚡ Explore Tools</h2>
-    <p>তোমার ডিজিটাল ওয়ার্কস্পেস — আরও টুলস পরে যোগ করতে পারবে।</p>
-  </div>
+  <section class="section wrap" id="tools">
+    <div class="section-head"><div><h2>⚡ Mini Tools</h2><p class="sub">Simple tools that run locally in your browser.</p></div></div>
+    <div class="toolbox">
+      <article class="tool reveal">
+        <h3>🔐 Password Generator</h3><p>Generate a random password on your device.</p>
+        <label for="passLength">Length: <span class="count" id="passLengthValue">16</span></label>
+        <input class="field" id="passLength" type="range" min="8" max="48" value="16">
+        <div class="tool-actions"><button id="makePass">Generate Password</button><button id="copyPass">Copy</button></div>
+        <div class="output" id="passOutput" aria-live="polite">Your password will appear here.</div>
+      </article>
+      <article class="tool reveal">
+        <h3>📝 Text Counter</h3><p>Count characters, words, and lines.</p>
+        <textarea class="field" id="counterInput" placeholder="Type or paste your text here..." aria-label="Text to count"></textarea>
+        <div class="meta">Characters: <b class="count" id="chars">0</b> · Words: <b class="count" id="words">0</b> · Lines: <b class="count" id="lines">0</b></div>
+      </article>
+      <article class="tool reveal">
+        <h3>🔠 Case Converter</h3><p>Convert text to uppercase, lowercase, or title case.</p>
+        <textarea class="field" id="caseInput" placeholder="Enter text to convert..." aria-label="Text to convert"></textarea>
+        <div class="tool-actions"><button data-case="upper">UPPERCASE</button><button data-case="lower">lowercase</button><button data-case="title">Title Case</button><button id="copyCase">Copy</button></div>
+        <div class="output" id="caseOutput" aria-live="polite">Converted text appears here.</div>
+      </article>
+      <article class="tool reveal">
+        <h3>🔁 Base64 Encoder / Decoder</h3><p>For text encoding experiments. This is not encryption.</p>
+        <textarea class="field" id="baseInput" placeholder="Enter text..." aria-label="Base64 input"></textarea>
+        <div class="tool-actions"><button id="encode64">Encode</button><button id="decode64">Decode</button><button id="copy64">Copy result</button></div>
+        <div class="output" id="baseOutput" aria-live="polite">Result appears here.</div>
+      </article>
+      <article class="tool reveal">
+        <h3>🧩 JSON Formatter</h3><p>Format or validate JSON in your browser.</p>
+        <textarea class="field" id="jsonInput" placeholder='{"name":"Tamim","project":"NEON CYBER"}' aria-label="JSON input"></textarea>
+        <div class="tool-actions"><button id="formatJson">Format JSON</button><button id="minifyJson">Minify</button></div>
+        <div class="output" id="jsonOutput" aria-live="polite">JSON result appears here.</div>
+      </article>
+      <article class="tool reveal">
+        <h3>🧮 Quick Calculator</h3><p>Calculate using two numbers and an operation.</p>
+        <input class="field" id="numA" type="number" inputmode="decimal" placeholder="First number">
+        <select class="field" id="operator" aria-label="Operation"><option value="+">Add (+)</option><option value="-">Subtract (−)</option><option value="*">Multiply (×)</option><option value="/">Divide (÷)</option><option value="%">Remainder (%)</option></select>
+        <input class="field" id="numB" type="number" inputmode="decimal" placeholder="Second number">
+        <button id="calculate">Calculate</button><div class="output" id="calcOutput" aria-live="polite">Answer appears here.</div>
+      </article>
+    </div>
+  </section>
 
-  <div class="grid" id="grid">
-    <article class="card" data-search="password generator security">
-      <div class="icon">🔐</div>
-      <h3>Password Generator</h3>
-      <p>নিরাপদ ও র‍্যান্ডম পাসওয়ার্ড তৈরি করার টুল।</p>
-      <button onclick="openTool('password')">Open Tool ↗</button>
-    </article>
+  <section class="section wrap" id="projects">
+    <div class="section-head"><div><h2>🚀 Projects & Learning</h2><p class="sub">A growing collection of experiments and learning goals.</p></div></div>
+    <div class="grid">
+      <article class="card reveal"><div class="icon">🐍</div><h3>Python Development</h3><p>Learning Python from the basics and building small useful projects.</p><span class="meta">Learning in progress</span></article>
+      <article class="card reveal"><div class="icon">📱</div><h3>Android & Termux</h3><p>Exploring Android tools, command-line workflows, and system customization.</p><span class="meta">Hands-on practice</span></article>
+      <article class="card reveal"><div class="icon">🛡️</div><h3>Cybersecurity Lab</h3><p>Studying networking and security concepts in authorized, safe test environments.</p><span class="meta">Ethical learning only</span></article>
+    </div>
+  </section>
 
-    <article class="card" data-search="text counter writing words">
-      <div class="icon">📝</div>
-      <h3>Text Counter</h3>
-      <p>লেখার অক্ষর, শব্দ ও দৈর্ঘ্য হিসাব করো।</p>
-      <button onclick="openTool('text')">Open Tool ↗</button>
-    </article>
-
-    <article class="card" data-search="developer projects portfolio">
-      <div class="icon">💻</div>
-      <h3>My Projects</h3>
-      <p>নিজের কোডিং প্রজেক্ট ও কাজের পরিচিতি।</p>
-      <button onclick="openTool('projects')">Explore ↗</button>
-    </article>
-
-    <article class="card" data-search="network learning cyber security">
-      <div class="icon">🌐</div>
-      <h3>Cyber Learning</h3>
-      <p>নেটওয়ার্কিং ও সাইবার নিরাপত্তা শেখার নোট।</p>
-      <button onclick="openTool('learning')">Explore ↗</button>
-    </article>
-  </div>
-
-  <p id="empty" hidden>কোনো টুল পাওয়া যায়নি। অন্য শব্দ দিয়ে খোঁজ করো।</p>
-
-  <div class="notice">
-    <strong>⚠️ Security First</strong><br>
-    এই সাইটটি শেখা ও বৈধ ডেভেলপমেন্টের জন্য।
-    এখানে কোনো অনুমতিহীন অ্যাক্সেস বা মেসেজ স্প্যামিং ফিচার নেই।
-  </div>
+  <section class="section wrap" id="about">
+    <div class="section-head"><div><h2>👨‍💻 About Me</h2><p class="sub">The person behind this little cyber corner.</p></div></div>
+    <div class="about">
+      <article class="panel reveal">
+        <div class="profile"><div class="avatar" aria-hidden="true">MT</div><div><h3 style="margin:0">MD Tamim Hossain Afif</h3><div class="meta">Learner • Tech Explorer • Aspiring Developer</div></div></div>
+        <p>I enjoy learning programming, exploring Android technology, and building helpful digital projects. NEON CYBER is my place to practise, share, and grow.</p>
+        <p class="meta">Current interests: Python, Termux, web development, and responsible cybersecurity.</p>
+      </article>
+      <article class="panel reveal" id="contact">
+        <h3 style="margin-top:0">📬 Contact</h3>
+        <div class="contact-row"><span class="meta">Email</span><br><a href="mailto:mdtamimhossainafif@gmail.com">mdtamimhossainafif@gmail.com</a></div>
+        <div class="contact-row"><span class="meta">GitHub</span><br><a href="https://github.com/mdtamimhossainafif" target="_blank" rel="noopener noreferrer">github.com/mdtamimhossainafif ↗</a></div>
+        <p class="meta">For questions about projects or learning, feel free to email me.</p>
+      </article>
+    </div>
+  </section>
 </main>
 
-<footer>
-  © <span id="year"></span> NEON CYBER • Built for learning
-</footer>
-
+<footer><div class="wrap">© <span id="year"></span> NEON CYBER · Built by MD Tamim Hossain Afif · <a href="#home">Back to top ↑</a></div></footer>
 <script>
-document.getElementById('year').textContent =
-  new Date().getFullYear();
+"use strict";
+const $ = (id) => document.getElementById(id);
+$("year").textContent = new Date().getFullYear();
 
-const search = document.getElementById('search');
-const cards = [...document.querySelectorAll('.card')];
-
-search.addEventListener('input', () => {
-  const query = search.value.toLowerCase().trim();
-  let count = 0;
-
-  cards.forEach(card => {
-    const match = (
-      card.innerText + ' ' + card.dataset.search
-    ).toLowerCase().includes(query);
-
-    card.hidden = !match;
-    if (match) count++;
-  });
-
-  document.getElementById('empty').hidden = count !== 0;
-});
-
-function openTool(name) {
-  if (name === 'password') {
-    const chars =
-      'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%';
-    const values = new Uint32Array(20);
-    crypto.getRandomValues(values);
-
-    const password = Array.from(values,
-      value => chars[value % chars.length]).join('');
-
-    alert('Demo password (20 characters):\n' + password);
-  } else if (name === 'text') {
-    const text = prompt('এখানে তোমার লেখা পেস্ট করো:');
-    if (text !== null) {
-      const words = text.trim() ? text.trim().split(/\s+/).length : 0;
-      alert(
-        'Characters: ' + text.length +
-        '\nWords: ' + words
-      );
-    }
-  } else if (name === 'projects') {
-    alert('তোমার প্রজেক্টের লিংক এখানে যোগ করবে।');
-  } else if (name === 'learning') {
-    alert('এখানে তোমার সাইবার সিকিউরিটি শেখার নোট যোগ করবে।');
+const lengthSlider = $("passLength");
+lengthSlider.addEventListener("input", () => $("passLengthValue").textContent = lengthSlider.value);
+$("makePass").addEventListener("click", () => {
+  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%&*+-_?";
+  const values = new Uint32Array(Number(lengthSlider.value));
+  if (window.crypto && window.crypto.getRandomValues) {
+    window.crypto.getRandomValues(values);
+    $("passOutput").textContent = Array.from(values, n => chars[n % chars.length]).join("");
+  } else {
+    $("passOutput").textContent = "Secure random generation is not available in this browser.";
   }
+});
+$("copyPass").addEventListener("click", async () => copyText($("passOutput").textContent, $("copyPass")));
+$("counterInput").addEventListener("input", () => {
+  const value = $("counterInput").value;
+  $("chars").textContent = value.length;
+  $("words").textContent = value.trim() ? value.trim().split(/\s+/u).length : 0;
+  $("lines").textContent = value ? value.split(/\r\n|\r|\n/).length : 0;
+});
+let converted = "";
+document.querySelectorAll("[data-case]").forEach(button => button.addEventListener("click", () => {
+  const value = $("caseInput").value;
+  const mode = button.dataset.case;
+  converted = mode === "upper" ? value.toUpperCase() : mode === "lower" ? value.toLowerCase() : value.toLowerCase().replace(/(^|[\s-])\p{L}/gu, c => c.toUpperCase());
+  $("caseOutput").textContent = converted || "(No text entered)";
+}));
+$("copyCase").addEventListener("click", async () => copyText(converted, $("copyCase")));
+$("encode64").addEventListener("click", () => {
+  try { $("baseOutput").textContent = btoa(unescape(encodeURIComponent($("baseInput").value))); }
+  catch { $("baseOutput").textContent = "Could not encode this text."; }
+});
+$("decode64").addEventListener("click", () => {
+  try { $("baseOutput").textContent = decodeURIComponent(escape(atob($("baseInput").value.trim()))); }
+  catch { $("baseOutput").textContent = "Invalid Base64 input."; }
+});
+$("copy64").addEventListener("click", async () => copyText($("baseOutput").textContent, $("copy64")));
+$("formatJson").addEventListener("click", () => jsonAction(true));
+$("minifyJson").addEventListener("click", () => jsonAction(false));
+function jsonAction(pretty) {
+  try { const data = JSON.parse($("jsonInput").value); $("jsonOutput").textContent = JSON.stringify(data, null, pretty ? 2 : 0); }
+  catch (error) { $("jsonOutput").textContent = "Invalid JSON: " + error.message; }
 }
+$("calculate").addEventListener("click", () => {
+  const a = Number($("numA").value), b = Number($("numB").value), op = $("operator").value;
+  if ($("numA").value.trim() === "" || $("numB").value.trim() === "") { $("calcOutput").textContent = "Enter both numbers first."; return; }
+  if ((op === "/" || op === "%") && b === 0) { $("calcOutput").textContent = "Cannot divide by zero."; return; }
+  const result = op === "+" ? a+b : op === "-" ? a-b : op === "*" ? a*b : op === "/" ? a/b : a%b;
+  $("calcOutput").textContent = String(result);
+});
+async function copyText(value, button) {
+  if (!value || value.startsWith("Your password") || value.startsWith("Result appears") || value.startsWith("Converted text")) { button.textContent = "Nothing to copy"; setTimeout(() => button.textContent = button.id === "copy64" ? "Copy result" : "Copy", 1400); return; }
+  try {
+    await navigator.clipboard.writeText(value);
+    button.textContent = "Copied!";
+  } catch {
+    const area = document.createElement("textarea"); area.value = value; area.style.position = "fixed"; area.style.opacity = "0"; document.body.appendChild(area); area.select();
+    const ok = document.execCommand("copy"); area.remove(); button.textContent = ok ? "Copied!" : "Select and copy manually";
+  }
+  setTimeout(() => button.textContent = button.id === "copy64" ? "Copy result" : "Copy", 1600);
+}
+if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+    if (entry.isIntersecting) { entry.target.classList.add("visible"); observer.unobserve(entry.target); }
+  }), {threshold:.12});
+  document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+} else { document.querySelectorAll(".reveal").forEach(el => el.classList.add("visible")); }
 </script>
 </body>
 </html>
