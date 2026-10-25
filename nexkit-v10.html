@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0a0f1c">
+<meta name="description" content="Nexkit: smart, free everyday tools by MD Tamim Hossain Afif. Image compressor, QR maker, Bangla to Banglish, translator and more.">
+<title>Nexkit | Tools & Projects</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#0a0f1c;--surface:#101828;--raised:#162033;--line:#223049;--text:#e9eff9;--muted:#8d9bb5;--accent:#38d9e8;--accent-ink:#031a1f;--ok:#4ade80;--font:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.65;font-size:16px;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+button,input,textarea,select{font:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{width:min(1040px,calc(100% - 40px));margin:auto}
+header{position:sticky;top:0;z-index:10;background:rgba(10,15,28,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;min-height:64px;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.04em;color:var(--text);white-space:nowrap}
+.brand:hover{text-decoration:none}
+.logo{width:26px;height:26px;border-radius:7px;background:var(--accent);display:grid;place-items:center;color:var(--accent-ink);font-size:.8rem;font-weight:800;letter-spacing:0}
+nav{display:flex;gap:4px}
+nav a{color:var(--muted);padding:7px 12px;border-radius:8px;font-size:.95rem;font-weight:500}
+nav a:hover{color:var(--text);background:var(--raised);text-decoration:none}
+
+.hero{padding:88px 0 56px;max-width:760px}
+h1{font-size:clamp(2.3rem,7vw,3.9rem);line-height:1.08;font-weight:800;letter-spacing:-.025em;margin:0 0 18px}
+.lead{color:var(--muted);font-size:1.12rem;max-width:600px;margin:0}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn,button{border:1px solid var(--line);border-radius:10px;background:var(--raised);color:var(--text);padding:9px 16px;cursor:pointer;font-weight:600;font-size:.95rem;transition:background .15s,border-color .15s}
+.btn:hover,button:hover{border-color:#34476a;background:#1b2840;text-decoration:none}
+.btn.primary,button.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover,button.primary:hover{background:#6be6f1;border-color:#6be6f1}
+.btn{display:inline-block;padding:11px 20px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:56px;border-top:1px solid var(--line)}
+.facts div{padding:18px 20px 0 0}
+.facts b{display:block;font-size:1rem}
+.facts span{color:var(--muted);font-size:.92rem}
+
+.section{padding:56px 0}
+.head{margin-bottom:26px;max-width:640px}
+h2{font-size:clamp(1.6rem,4.5vw,2.1rem);font-weight:800;letter-spacing:-.015em;margin:0 0 6px}
+.sub{color:var(--muted);margin:0}
+
+/* tool workspace */
+.ws{display:grid;grid-template-columns:230px minmax(0,1fr);background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.tabs{display:flex;flex-direction:column;gap:2px;padding:12px;border-right:1px solid var(--line);background:#0d1424}
+.tab{text-align:left;border:0;background:transparent;color:var(--muted);padding:10px 12px;border-radius:9px;font-weight:600}
+.tab:hover{background:var(--raised);color:var(--text)}
+.tab[aria-selected=true]{background:var(--raised);color:var(--text);box-shadow:inset 3px 0 0 var(--accent)}
+.pane{padding:28px;min-width:0}
+.pane[hidden]{display:none}
+.pane h3{margin:0 0 4px;font-size:1.25rem}
+.pane>p{margin:0 0 16px;color:var(--muted);font-size:.95rem}
+.field{width:100%;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:11px 13px;margin:6px 0}
+.field:focus{border-color:var(--accent);outline:0}
+textarea.field{min-height:120px;resize:vertical}
+input[type=range]{accent-color:var(--accent);padding:0;border:0;background:none}
+.row{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.opts{display:flex;flex-wrap:wrap;gap:8px 20px;margin:10px 0;color:var(--muted);font-size:.95rem}
+.opts label{display:flex;align-items:center;gap:8px;cursor:pointer}
+.opts input{accent-color:var(--accent);width:16px;height:16px}
+.out{overflow-wrap:anywhere;white-space:pre-wrap;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 13px;margin-top:14px;min-height:48px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.92rem;color:#c8f7ff}
+.out[data-empty]{color:#5d6d8c;font-family:var(--font)}
+.meter{height:5px;border-radius:5px;background:var(--raised);margin-top:14px;overflow:hidden}
+.meter div{height:100%;width:0;transition:width .3s,background .3s}
+.hint{font-size:.88rem;color:var(--muted);margin-top:6px}
+.num{font-variant-numeric:tabular-nums;color:var(--accent);font-weight:700}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.stats div{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px}
+.stats b{display:block;font-size:1.5rem;color:var(--accent);font-variant-numeric:tabular-nums}
+.stats span{color:var(--muted);font-size:.88rem}
+.calc{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.calc .field{margin:0}
+
+#imgPrev,#qrCanvas{display:block;max-width:100%;height:auto;margin-top:14px;border:1px solid var(--line);border-radius:10px;background:#fff}
+#imgPrev[hidden],#qrCanvas[hidden],a.btn[hidden],.stats[hidden]{display:none}
+input[type=file]{padding:9px}
+label{font-weight:500}
+.btn{line-height:1.3}
+/* projects */
+.list{border-top:1px solid var(--line)}
+.item{display:grid;grid-template-columns:240px minmax(0,1fr) auto;gap:8px 28px;padding:24px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.item h3{margin:0;font-size:1.1rem}
+.item p{margin:0;color:var(--muted)}
+.status{font-size:.9rem;font-weight:600;color:var(--ok);white-space:nowrap}
+.status.b{color:var(--accent)}.status.y{color:#fbbf24}
+
+main{position:relative}
+#rain{position:absolute;left:0;top:0;width:100%;height:620px;opacity:.2;pointer-events:none;z-index:-1;-webkit-mask-image:linear-gradient(#000 35%,transparent);mask-image:linear-gradient(#000 35%,transparent)}
+.ws{box-shadow:0 0 70px rgba(56,217,232,.06)}
+#tools h2::before{content:"> ";color:var(--accent)}
+.pane{position:relative}
+.pane.enter{animation:paneIn .6s cubic-bezier(.2,.8,.2,1)}
+.pane.enter::after{content:"";position:absolute;left:0;right:0;top:0;height:2px;pointer-events:none;background:linear-gradient(90deg,transparent,var(--accent),transparent);box-shadow:0 0 16px var(--accent);animation:scan .8s ease-out forwards}
+.cmd{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.82rem;color:var(--ok);margin-bottom:10px;min-height:1.3em}
+.cmd .ok{color:var(--accent)}
+.cmd::after{content:"\25AE";margin-left:3px;color:var(--ok);animation:blink 1s steps(2) infinite}
+@keyframes paneIn{from{opacity:0;transform:translateX(20px);clip-path:inset(0 0 100% 0)}to{opacity:1;transform:none;clip-path:inset(0 0 0 0)}}
+@keyframes scan{from{top:0;opacity:1}to{top:100%;opacity:0}}
+@keyframes blink{50%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.pane.enter,.pane.enter::after{animation:none}#rain{display:none}}
+footer{margin-top:56px;border-top:1px solid var(--line);background:#080d19;color:var(--muted);font-size:.95rem}
+.ft{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:32px;padding:44px 0 32px}
+.ft p{margin:12px 0 0;max-width:34ch}
+.ft h4{margin:0 0 12px;color:var(--text);font-size:.95rem;font-weight:700}
+.ft ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+footer a{color:var(--muted)}
+footer a:hover{color:var(--accent);text-decoration:none}
+footer .brand{color:var(--text)}
+.ft-by{display:flex;align-items:center;gap:14px;padding:22px 0;border-top:1px solid var(--line)}
+.ft-av{position:relative;width:60px;height:60px;flex:0 0 60px;border-radius:50%;overflow:hidden;background:var(--raised);border:1px solid var(--line);display:grid;place-items:center;font-weight:800;color:var(--accent)}
+.ft-av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ft-by b{display:block;color:var(--text);font-size:1rem}
+.ft-by span{font-size:.88rem}
+.ft-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20px;padding:18px 0 28px;border-top:1px solid var(--line);font-size:.88rem}
+@media(max-width:700px){.ft{grid-template-columns:1fr 1fr}.ft-brand{grid-column:1/-1}}
+/* about */
+.about{display:grid;grid-template-columns:1.2fr .8fr;gap:20px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:28px}
+.me{display:flex;align-items:center;gap:16px;margin-bottom:16px}
+.avatar{width:60px;height:60px;flex:0 0 60px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:1.15rem;background:var(--raised);border:1px solid var(--line);color:var(--accent)}
+.panel h3{margin:0;font-size:1.15rem}
+.meta{color:var(--muted);font-size:.95rem}
+.panel p{margin:0 0 12px}
+.cl{padding:14px 0;border-bottom:1px solid var(--line);overflow-wrap:anywhere}
+.cl:first-of-type{padding-top:8px}
+.cl span{display:block;color:var(--muted);font-size:.88rem}
+#toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,16px);background:var(--raised);border:1px solid var(--line);color:var(--text);padding:10px 18px;border-radius:10px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:20;font-size:.93rem}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media(max-width:820px){.ws{grid-template-columns:1fr}.tabs{flex-direction:row;overflow-x:auto;border-right:0;border-bottom:1px solid var(--line);padding:10px;-webkit-overflow-scrolling:touch}.tab{white-space:nowrap}.tab[aria-selected=true]{box-shadow:inset 0 -3px 0 var(--accent)}.item{grid-template-columns:1fr auto}.item p{grid-column:1/-1;grid-row:2}.about{grid-template-columns:1fr}}
+@media(max-width:560px){.wrap{width:calc(100% - 28px)}.brand{font-size:.92rem;gap:8px}nav{gap:0}nav a{padding:6px 8px;font-size:.9rem}.hero{padding:56px 0 36px}.facts{grid-template-columns:1fr}.facts div{padding:14px 0 0}.pane{padding:20px 16px}.calc{grid-template-columns:1fr}.section{padding:40px 0}.panel{padding:22px 18px}.stats b{font-size:1.2rem}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#home" aria-label="Nexkit home"><span class="logo" aria-hidden="true">N</span>Nexkit</a>
+    <nav aria-label="Main navigation"><a href="#tools">Tools</a><a href="#contact">Contact</a></nav>
+  </div>
+</header>
+
+<main id="home">
+  <canvas id="rain" aria-hidden="true"></canvas>
+  <section class="wrap hero">
+    <h1>Welcome to Nexkit</h1>
+    <p class="lead">Smart everyday tools by MD Tamim Hossain Afif. Compress images, make QR codes, convert Bangla to Banglish, translate and more. Free, fast and private in your browser.</p>
+    <div class="actions"><a class="btn primary" href="#tools">Use the tools</a><a class="btn" href="#contact">Contact</a></div>
+    <div class="facts">
+      <div><b>Private</b><span>Everything runs in your browser.</span></div>
+      <div><b>Free</b><span>No sign-up, no ads, no tracking.</span></div>
+      <div><b>13 tools</b><span>Images, QR codes, Bangla tools and more.</span></div>
+    </div>
+  </section>
+
+  <section class="section wrap" id="tools">
+    <div class="head"><h2>Tools</h2><p class="sub">Pick a tool from the list. Your data never leaves your device.</p></div>
+    <div class="ws">
+      <div class="tabs" role="tablist" aria-label="Tools">
+        <button class="tab" role="tab" id="t-pass" aria-controls="p-pass" aria-selected="true">Password generator</button>
+        <button class="tab" role="tab" id="t-count" aria-controls="p-count" aria-selected="false">Text counter</button>
+        <button class="tab" role="tab" id="t-case" aria-controls="p-case" aria-selected="false">Case converter</button>
+        <button class="tab" role="tab" id="t-bn" aria-controls="p-bn" aria-selected="false">Bangla to Banglish</button>
+        <button class="tab" role="tab" id="t-tr" aria-controls="p-tr" aria-selected="false">Bangla translator</button>
+        <button class="tab" role="tab" id="t-json" aria-controls="p-json" aria-selected="false">JSON formatter</button>
+        <button class="tab" role="tab" id="t-calc" aria-controls="p-calc" aria-selected="false">Calculator</button>
+        <button class="tab" role="tab" id="t-img" aria-controls="p-img" aria-selected="false">Image compressor</button>
+        <button class="tab" role="tab" id="t-qr" aria-controls="p-qr" aria-selected="false">QR code maker</button>
+        <button class="tab" role="tab" id="t-age" aria-controls="p-age" aria-selected="false">Age calculator</button>
+        <button class="tab" role="tab" id="t-unit" aria-controls="p-unit" aria-selected="false">Unit converter</button>
+        <button class="tab" role="tab" id="t-emi" aria-controls="p-emi" aria-selected="false">Loan EMI calculator</button>
+        <button class="tab" role="tab" id="t-pct" aria-controls="p-pct" aria-selected="false">Percentage</button>
+      </div>
+      <div>
+        <section class="pane" id="p-pass" role="tabpanel" aria-labelledby="t-pass">
+          <h3>Password generator</h3><p>Creates a random password using your browser’s secure random source.</p>
+          <label for="passLength">Length: <span class="num" id="passLengthValue">16</span></label>
+          <input class="field" id="passLength" type="range" min="8" max="48" value="16">
+          <div class="opts"><label><input type="checkbox" id="oUp" checked> Uppercase</label><label><input type="checkbox" id="oNum" checked> Numbers</label><label><input type="checkbox" id="oSym" checked> Symbols</label></div>
+          <div class="row"><button class="primary" id="makePass">Generate password</button><button id="copyPass">Copy</button></div>
+          <div class="out" id="passOutput" aria-live="polite" data-empty>Your password will appear here.</div>
+          <div class="meter" aria-hidden="true"><div id="meterBar"></div></div>
+          <div class="hint" id="meterText"></div>
+        </section>
+
+        <section class="pane" id="p-count" role="tabpanel" aria-labelledby="t-count" hidden>
+          <h3>Text counter</h3><p>Count characters, words and lines as you type.</p>
+          <textarea class="field" id="counterInput" placeholder="Type or paste your text here..." aria-label="Text to count"></textarea>
+          <div class="stats"><div><b id="chars">0</b><span>Characters</span></div><div><b id="words">0</b><span>Words</span></div><div><b id="lines">0</b><span>Lines</span></div></div>
+        </section>
+
+        <section class="pane" id="p-case" role="tabpanel" aria-labelledby="t-case" hidden>
+          <h3>Case converter</h3><p>Switch text to uppercase, lowercase or title case.</p>
+          <textarea class="field" id="caseInput" placeholder="Enter text to convert..." aria-label="Text to convert"></textarea>
+          <div class="row"><button data-case="upper">UPPERCASE</button><button data-case="lower">lowercase</button><button data-case="title">Title Case</button><button data-copy="caseOutput">Copy</button></div>
+          <div class="out" id="caseOutput" aria-live="polite" data-empty>Converted text appears here.</div>
+        </section>
+
+        <section class="pane" id="p-bn" role="tabpanel" aria-labelledby="t-bn" hidden>
+          <h3>Bangla to Banglish</h3><p>Type in Bangla and get the Banglish spelling in English letters. Common spelling slips such as ই/ঈ, ন/ণ and শ/ষ/স give the same result.</p>
+          <textarea class="field" id="bnIn" placeholder="এখানে বাংলা লিখুন..." aria-label="Bangla text"></textarea>
+          <div class="row"><button data-copy="bnOut">Copy Banglish</button></div>
+          <div class="out" id="bnOut" aria-live="polite" data-empty>Banglish appears here as you type.</div>
+        </section>
+
+        <section class="pane" id="p-tr" role="tabpanel" aria-labelledby="t-tr" hidden>
+          <h3>Bangla translator</h3><p>Translate between Bangla and English. The language is detected automatically. Needs an internet connection.</p>
+          <select class="field" id="trDir" aria-label="Translation direction"><option value="bn|en">Bangla → English</option><option value="en|bn">English → Bangla</option></select>
+          <textarea class="field" id="trIn" placeholder="Write or paste your text..." aria-label="Text to translate"></textarea>
+          <div class="row"><button class="primary" id="trGo">Translate</button><button data-copy="trOut">Copy</button></div>
+          <div class="out" id="trOut" aria-live="polite" data-empty>Translation appears here.</div>
+          <div class="hint">Free translation service. Very heavy daily use may hit a limit.</div>
+        </section>
+
+        <section class="pane" id="p-json" role="tabpanel" aria-labelledby="t-json" hidden>
+          <h3>JSON formatter</h3><p>Format, minify or validate JSON.</p>
+          <textarea class="field" id="jsonInput" placeholder='{"name":"Tamim","project":"Nexkit"}' aria-label="JSON input"></textarea>
+          <div class="row"><button class="primary" id="formatJson">Format</button><button id="minifyJson">Minify</button><button data-copy="jsonOutput">Copy</button></div>
+          <div class="out" id="jsonOutput" aria-live="polite" data-empty>JSON result appears here.</div>
+        </section>
+
+        <section class="pane" id="p-calc" role="tabpanel" aria-labelledby="t-calc" hidden>
+          <h3>Calculator</h3><p>Pick two numbers and an operation.</p>
+          <div class="calc">
+            <input class="field" id="numA" type="number" inputmode="decimal" placeholder="First number" aria-label="First number">
+            <select class="field" id="operator" aria-label="Operation"><option value="+">Add (+)</option><option value="-">Subtract (−)</option><option value="*">Multiply (×)</option><option value="/">Divide (÷)</option><option value="%">Remainder (%)</option></select>
+            <input class="field" id="numB" type="number" inputmode="decimal" placeholder="Second number" aria-label="Second number">
+          </div>
+          <div class="row"><button class="primary" id="calculate">Calculate</button></div>
+          <div class="out" id="calcOutput" aria-live="polite" data-empty>Answer appears here.</div>
+        </section>
+
+        <section class="pane" id="p-img" role="tabpanel" aria-labelledby="t-img" hidden>
+          <h3>Image compressor and resizer</h3><p>Shrink photos for email, forms and uploads. The image stays on your device.</p>
+          <input class="field" id="imgFile" type="file" accept="image/*" aria-label="Choose an image">
+          <label for="imgQ">Quality: <span class="num" id="imgQv">75</span>%</label>
+          <input class="field" id="imgQ" type="range" min="10" max="100" value="75">
+          <label for="imgW">Maximum width in pixels (optional)</label>
+          <input class="field" id="imgW" type="number" inputmode="numeric" placeholder="e.g. 1280">
+          <div class="row"><button class="primary" id="imgGo">Compress image</button><a class="btn" id="imgDl" download="compressed.jpg" hidden>Download</a></div>
+          <div class="out" id="imgOut" aria-live="polite" data-empty>Choose an image to begin.</div>
+          <img id="imgPrev" alt="Compressed preview" hidden>
+        </section>
+
+        <section class="pane" id="p-qr" role="tabpanel" aria-labelledby="t-qr" hidden>
+          <h3>QR code maker</h3><p>Turn a link, phone number or any text into a QR code.</p>
+          <textarea class="field" id="qrText" placeholder="https://example.com" aria-label="QR code content" style="min-height:80px"></textarea>
+          <div class="row"><button class="primary" id="qrGo">Create QR code</button><a class="btn" id="qrDl" download="qrcode.png" hidden>Download PNG</a></div>
+          <div class="out" id="qrOut" aria-live="polite" data-empty>Enter some text first.</div>
+          <canvas id="qrCanvas" width="320" height="320" hidden></canvas>
+        </section>
+
+        <section class="pane" id="p-age" role="tabpanel" aria-labelledby="t-age" hidden>
+          <h3>Age calculator</h3><p>Find an exact age and the days left until the next birthday.</p>
+          <label for="dob">Date of birth</label>
+          <input class="field" id="dob" type="date">
+          <div class="row"><button class="primary" id="ageGo">Calculate age</button></div>
+          <div class="out" id="ageOut" aria-live="polite" data-empty>Pick a date of birth.</div>
+        </section>
+
+        <section class="pane" id="p-unit" role="tabpanel" aria-labelledby="t-unit" hidden>
+          <h3>Unit converter</h3><p>Length, weight, volume, temperature and land area, including katha, bigha and decimal.</p>
+          <select class="field" id="uCat" aria-label="Category"><option>Length</option><option>Weight</option><option>Volume</option><option>Temperature</option><option>Area</option></select>
+          <input class="field" id="uVal" type="number" inputmode="decimal" value="1" aria-label="Value">
+          <div class="calc" style="grid-template-columns:1fr 1fr"><select class="field" id="uFrom" aria-label="From unit"></select><select class="field" id="uTo" aria-label="To unit"></select></div>
+          <div class="out" id="uOut" aria-live="polite" data-empty>Result appears here.</div>
+        </section>
+
+        <section class="pane" id="p-emi" role="tabpanel" aria-labelledby="t-emi" hidden>
+          <h3>Loan EMI calculator</h3><p>Estimate the monthly installment, total interest and total repayment.</p>
+          <input class="field" id="lAmt" type="number" inputmode="decimal" placeholder="Loan amount" aria-label="Loan amount">
+          <div class="calc" style="grid-template-columns:1fr 1fr"><input class="field" id="lRate" type="number" inputmode="decimal" placeholder="Yearly interest rate (%)" aria-label="Yearly interest rate"><input class="field" id="lYears" type="number" inputmode="decimal" placeholder="Tenure in years" aria-label="Tenure in years"></div>
+          <div class="row"><button class="primary" id="emiGo">Calculate EMI</button></div>
+          <div class="stats" id="emiStats" hidden><div><b id="emiM">0</b><span>Monthly EMI</span></div><div><b id="emiI">0</b><span>Total interest</span></div><div><b id="emiT">0</b><span>Total payment</span></div></div>
+          <div class="out" id="emiOut" aria-live="polite" data-empty>Enter amount, rate and tenure.</div>
+        </section>
+
+        <section class="pane" id="p-pct" role="tabpanel" aria-labelledby="t-pct" hidden>
+          <h3>Percentage calculator</h3><p>Useful for discounts, VAT, marks and price changes. Results update as you type.</p>
+          <label>What is <input class="field" id="a1" type="number" inputmode="decimal" style="width:90px;display:inline-block"> % of <input class="field" id="b1" type="number" inputmode="decimal" style="width:120px;display:inline-block"> ?</label>
+          <div class="out" id="r1" data-empty>Result appears here.</div>
+          <label style="display:block;margin-top:18px"><input class="field" id="a2" type="number" inputmode="decimal" style="width:100px;display:inline-block"> is what % of <input class="field" id="b2" type="number" inputmode="decimal" style="width:120px;display:inline-block"> ?</label>
+          <div class="out" id="r2" data-empty>Result appears here.</div>
+          <label style="display:block;margin-top:18px">Change from <input class="field" id="a3" type="number" inputmode="decimal" style="width:100px;display:inline-block"> to <input class="field" id="b3" type="number" inputmode="decimal" style="width:100px;display:inline-block"></label>
+          <div class="out" id="r3" data-empty>Result appears here.</div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap ft">
+    <div class="ft-brand">
+      <a class="brand" href="#home"><span class="logo" aria-hidden="true">N</span>Nexkit</a>
+      <p>Free, fast and private everyday tools that run right in your browser.</p>
+    </div>
+    <div>
+      <h4>Popular tools</h4>
+      <ul>
+        <li><a href="#tools" data-open="t-img">Image compressor</a></li>
+        <li><a href="#tools" data-open="t-qr">QR code maker</a></li>
+        <li><a href="#tools" data-open="t-bn">Bangla to Banglish</a></li>
+        <li><a href="#tools" data-open="t-tr">Bangla translator</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:mdtamimhossainafif@gmail.com">Email</a></li>
+        <li><a href="https://github.com/mdtamimhossainafif" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap ft-by">
+    <div class="ft-av"><span>MT</span><img src="data:image/jpeg;base64,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" alt="MD Tamim Hossain Afif" width="256" height="256"></div>
+    <div><span>Designed and developed by</span><b>MD Tamim Hossain Afif</b></div>
+  </div>
+  <div class="wrap ft-bottom"><span>© <span id="year"></span> Nexkit. All rights reserved.</span><a href="#home">Back to top ↑</a></div>
+</footer>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script>
+"use strict";
+const $ = (id) => document.getElementById(id);
+$("year").textContent = new Date().getFullYear();
+
+/* tabs */
+const tabs = Array.from(document.querySelectorAll(".tab"));
+const reduceM = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const GLY = "!<>-_/[]{}=+*^?#01";
+let fx = [];
+function playFx(pane, tab) {
+  fx.forEach(clearInterval); fx = [];
+  pane.classList.remove("enter"); void pane.offsetWidth; pane.classList.add("enter");
+  const h = pane.querySelector("h3"); if (!h.dataset.t) h.dataset.t = h.textContent;
+  let cmd = pane.querySelector(".cmd");
+  if (!cmd) { cmd = document.createElement("div"); cmd.className = "cmd"; cmd.setAttribute("aria-hidden", "true"); pane.insertBefore(cmd, h); }
+  const real = h.dataset.t, line = "> run " + tab.textContent.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-$/, "");
+  let f = 0, n = 0;
+  const s1 = setInterval(() => {
+    f++; const k = Math.floor(real.length * f / 14);
+    h.textContent = real.split("").map((c, i) => i < k || c === " " ? c : GLY[Math.floor(Math.random() * GLY.length)]).join("");
+    if (f >= 14) { clearInterval(s1); h.textContent = real; }
+  }, 35);
+  const s2 = setInterval(() => {
+    n++; cmd.textContent = line.slice(0, n);
+    if (n >= line.length) { clearInterval(s2); cmd.textContent = line + "  "; const ok = document.createElement("span"); ok.className = "ok"; ok.textContent = "[ok]"; cmd.append(ok); }
+  }, 24);
+  fx.push(s1, s2);
+}
+function openTab(tab, animate) {
+  tabs.forEach(t => {
+    const on = t === tab;
+    t.setAttribute("aria-selected", on);
+    t.tabIndex = on ? 0 : -1;
+    $(t.getAttribute("aria-controls")).hidden = !on;
+  });
+  if (animate) {
+    tab.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
+    if (!reduceM) playFx($(tab.getAttribute("aria-controls")), tab);
+  }
+}
+tabs.forEach((t, i) => {
+  t.addEventListener("click", () => openTab(t, true));
+  t.addEventListener("keydown", e => {
+    const d = e.key === "ArrowDown" || e.key === "ArrowRight" ? 1 : e.key === "ArrowUp" || e.key === "ArrowLeft" ? -1 : 0;
+    if (!d) return;
+    e.preventDefault();
+    const n = tabs[(i + d + tabs.length) % tabs.length]; n.focus(); openTab(n, true);
+  });
+});
+openTab(tabs[0]);
+
+function setOut(id, text, empty) {
+  const el = $(id); el.textContent = text;
+  if (empty) el.setAttribute("data-empty", ""); else el.removeAttribute("data-empty");
+}
+let toastTimer;
+function toast(msg) {
+  const t = $("toast"); t.textContent = msg; t.classList.add("show");
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove("show"), 1600);
+}
+async function copyFrom(id) {
+  const el = $(id), value = el.textContent;
+  if (el.hasAttribute("data-empty") || !value) { toast("Nothing to copy yet"); return; }
+  try { await navigator.clipboard.writeText(value); toast("Copied to clipboard"); }
+  catch {
+    const a = document.createElement("textarea"); a.value = value; a.style.cssText = "position:fixed;opacity:0";
+    document.body.appendChild(a); a.select();
+    const ok = document.execCommand("copy"); a.remove();
+    toast(ok ? "Copied to clipboard" : "Select the text and copy it manually");
+  }
+}
+document.querySelectorAll("[data-copy]").forEach(b => b.addEventListener("click", () => copyFrom(b.dataset.copy)));
+$("copyPass").addEventListener("click", () => copyFrom("passOutput"));
+
+/* password */
+const slider = $("passLength");
+function pool() {
+  let p = "abcdefghijkmnopqrstuvwxyz";
+  if ($("oUp").checked) p += "ABCDEFGHJKLMNPQRSTUVWXYZ";
+  if ($("oNum").checked) p += "23456789";
+  if ($("oSym").checked) p += "!@#$%&*+-_?";
+  return p;
+}
+function meter() {
+  const bits = Number(slider.value) * Math.log2(pool().length);
+  const [label, color, w] = bits < 50 ? ["Weak", "#f87171", 25] : bits < 75 ? ["Good", "#fbbf24", 50] : bits < 110 ? ["Strong", "#38d9e8", 78] : ["Very strong", "#4ade80", 100];
+  $("meterBar").style.width = w + "%"; $("meterBar").style.background = color;
+  $("meterText").textContent = label + " (about " + Math.round(bits) + " bits)";
+}
+function randomIndex(n) {
+  const limit = Math.floor(4294967296 / n) * n, v = new Uint32Array(1);
+  do { crypto.getRandomValues(v); } while (v[0] >= limit);
+  return v[0] % n;
+}
+$("makePass").addEventListener("click", () => {
+  if (!(window.crypto && crypto.getRandomValues)) { setOut("passOutput", "Secure random generation is not available in this browser.", true); return; }
+  const chars = pool(); let out = "";
+  for (let i = 0; i < Number(slider.value); i++) out += chars[randomIndex(chars.length)];
+  setOut("passOutput", out, false);
+});
+slider.addEventListener("input", () => { $("passLengthValue").textContent = slider.value; meter(); });
+["oUp", "oNum", "oSym"].forEach(id => $(id).addEventListener("change", meter));
+meter();
+
+/* counter */
+$("counterInput").addEventListener("input", () => {
+  const v = $("counterInput").value;
+  $("chars").textContent = v.length;
+  $("words").textContent = v.trim() ? v.trim().split(/\s+/u).length : 0;
+  $("lines").textContent = v ? v.split(/\r\n|\r|\n/).length : 0;
+});
+
+/* case */
+document.querySelectorAll("[data-case]").forEach(b => b.addEventListener("click", () => {
+  const v = $("caseInput").value, m = b.dataset.case;
+  if (!v) { setOut("caseOutput", "No text entered.", true); return; }
+  setOut("caseOutput", m === "upper" ? v.toUpperCase() : m === "lower" ? v.toLowerCase() : v.toLowerCase().replace(/(^|[\s-])\p{L}/gu, c => c.toUpperCase()), false);
+}));
+
+/* Bangla to Banglish */
+const BV = { "অ": "o", "আ": "a", "ই": "i", "ঈ": "i", "উ": "u", "ঊ": "u", "ঋ": "ri", "এ": "e", "ঐ": "oi", "ও": "o", "ঔ": "ou" };
+const BS = { "া": "a", "ি": "i", "ী": "i", "ু": "u", "ূ": "u", "ৃ": "ri", "ে": "e", "ৈ": "oi", "ো": "o", "ৌ": "ou" };
+const BC = { "ক": "k", "খ": "kh", "গ": "g", "ঘ": "gh", "ঙ": "ng", "চ": "ch", "ছ": "ch", "জ": "j", "ঝ": "jh", "ঞ": "n", "ট": "t", "ঠ": "th", "ড": "d", "ঢ": "dh", "ণ": "n", "ত": "t", "থ": "th", "দ": "d", "ধ": "dh", "ন": "n", "প": "p", "ফ": "f", "ব": "b", "ভ": "bh", "ম": "m", "য": "j", "র": "r", "ল": "l", "শ": "sh", "ষ": "sh", "স": "sh", "হ": "h", "ৎ": "t", "\u09DC": "r", "\u09DD": "rh", "\u09DF": "y" };
+const BD = "০১২৩৪৫৬৭৮৯";
+function bnRun(w) {
+  const ch = Array.from(w).filter(c => c !== "\u200c" && c !== "\u200d"), u = [];
+  for (let i = 0; i < ch.length; i++) {
+    const c = ch[i], n = ch[i + 1];
+    if (BV[c]) u.push({ v: BV[c] });
+    else if (BS[c]) u.push({ x: BS[c] });
+    else if (c === "ং") u.push({ x: "ng" });
+    else if (c === "ঁ") u.push({ x: "n" });
+    else if (c === "ঃ" || c === "্" || c === "\u09BC") continue;
+    else if (BD.includes(c)) u.push({ x: String(BD.indexOf(c)) });
+    else if (BC[c]) {
+      const k = { r: c, c: BC[c] };
+      if (n && BS[n]) { k.v = BS[n]; i++; } else if (n === "্") { k.join = true; i++; }
+      u.push(k);
+    } else u.push({ x: c });
+  }
+  let out = "", hasV = false, i = 0;
+  while (i < u.length) {
+    const x = u[i];
+    if (!x.c) { out += x.v || x.x; if (x.v) hasV = true; else if (x.x !== "ng" && x.x !== "n") hasV = false; i++; continue; }
+    let j = i; while (u[j].join && j + 1 < u.length && u[j + 1].c) j++;
+    const parts = []; let gem = false;
+    for (let k = i; k <= j; k++) {
+      let r = u[k].c;
+      if (k > i && u[k].r === "য") { const q = parts.length - 1; if (i === 0 && k === 1) parts[q] += "y"; else { parts[q] = parts[q][0] + parts[q]; gem = true; } continue; }
+      if (k > i && u[k].r === "ষ" && u[k - 1].r === "ক") { parts[parts.length - 1] = "kkh"; continue; }
+      if (k > i && u[k].r === "ঞ" && u[k - 1].r === "জ") { parts[parts.length - 1] = "gg"; continue; }
+      if (u[k].r === "স" && u[k].join) r = "s";
+      parts.push(r);
+    }
+    const L = u[j]; let vowel;
+    if (L.v) vowel = L.v;
+    else if (L.join) vowel = "";
+    else if (j === u.length - 1) vowel = (j > i || u.length === 1) ? "o" : "";
+    else {
+      let m = j + 1; while (u[m].join && m + 1 < u.length && u[m + 1].c) m++;
+      const nx = u[m], nextHas = nx.c ? !!(nx.v || m < u.length - 1 || m > j + 1) : !!nx.v;
+      vowel = (hasV && nextHas && i > 0) ? "" : "o";
+    }
+    if (!L.v && !L.join) { if (gem) vowel = "o"; if (i === 0 && j === 1 && u[1].r === "য") vowel = "a"; }
+    out += parts.join("") + vowel; hasV = vowel !== ""; i = j + 1;
+  }
+  return out;
+}
+function toBanglish(s) {
+  s = s.replace(/\u09C7\u09BE/g, "\u09CB").replace(/\u09C7\u09D7/g, "\u09CC").replace(/\u09A1\u09BC/g, "\u09DC").replace(/\u09A2\u09BC/g, "\u09DD").replace(/\u09AF\u09BC/g, "\u09DF");
+  return s.replace(/[\u0980-\u09FF\u200c\u200d]+/g, bnRun).replace(/\u0964/g, ".").replace(/(^|[.!?]\s+)([a-z])/g, (m, a, b) => a + b.toUpperCase());
+}
+$("bnIn").addEventListener("input", () => {
+  const v = $("bnIn").value;
+  v.trim() ? setOut("bnOut", toBanglish(v), false) : setOut("bnOut", "Banglish appears here as you type.", true);
+});
+
+/* translator */
+function chunkText(t) {
+  const len = x => new TextEncoder().encode(x).length, out = []; let cur = "";
+  for (const p of t.split(/(?<=[\u0964.!?\n])/)) {
+    if (len(cur + p) <= 450) { cur += p; continue; }
+    if (cur) out.push(cur); cur = p;
+    while (len(cur) > 450) { let k = cur.length; while (len(cur.slice(0, k)) > 450) k--; out.push(cur.slice(0, k)); cur = cur.slice(k); }
+  }
+  if (cur.trim()) out.push(cur);
+  return out;
+}
+async function translateChunk(c, dir) {
+  const [sl, tl] = dir.split("|");
+  try {
+    const r = await fetch("https://api.mymemory.translated.net/get?q=" + encodeURIComponent(c) + "&langpair=" + encodeURIComponent(dir));
+    const d = await r.json(), t = d.responseData && d.responseData.translatedText;
+    if (Number(d.responseStatus) === 200 && t && !/MYMEMORY WARNING/i.test(t)) return t;
+  } catch (e) { /* fall back to the second service */ }
+  const r2 = await fetch("https://translate.googleapis.com/translate_a/single?client=gtx&dt=t&sl=" + sl + "&tl=" + tl + "&q=" + encodeURIComponent(c));
+  const d2 = await r2.json();
+  return d2[0].map(x => x[0]).join("");
+}
+$("trGo").addEventListener("click", async () => {
+  const t = $("trIn").value.trim();
+  if (!t) { setOut("trOut", "Enter some text first.", true); return; }
+  const dir = /[\u0980-\u09FF]/.test(t) ? "bn|en" : "en|bn";
+  $("trDir").value = dir;
+  setOut("trOut", "Translating...", true);
+  try {
+    const res = [];
+    for (const c of chunkText(t)) res.push(await translateChunk(c, dir));
+    setOut("trOut", res.join(" "), false);
+  } catch { setOut("trOut", "Could not reach the translation service. Open the live website with an active internet connection and try again.", true); }
+});
+
+/* json */
+function jsonAction(pretty) {
+  try { setOut("jsonOutput", JSON.stringify(JSON.parse($("jsonInput").value), null, pretty ? 2 : 0), false); }
+  catch (e) { setOut("jsonOutput", "Invalid JSON: " + e.message, true); }
+}
+$("formatJson").addEventListener("click", () => jsonAction(true));
+$("minifyJson").addEventListener("click", () => jsonAction(false));
+
+/* calculator */
+$("calculate").addEventListener("click", () => {
+  const a = Number($("numA").value), b = Number($("numB").value), op = $("operator").value;
+  if ($("numA").value.trim() === "" || $("numB").value.trim() === "") { setOut("calcOutput", "Enter both numbers first.", true); return; }
+  if ((op === "/" || op === "%") && b === 0) { setOut("calcOutput", "Cannot divide by zero.", true); return; }
+  setOut("calcOutput", String(op === "+" ? a + b : op === "-" ? a - b : op === "*" ? a * b : op === "/" ? a / b : a % b), false);
+});
+
+/* image compressor */
+const fmtSize = n => n > 1048576 ? (n / 1048576).toFixed(2) + " MB" : Math.max(1, Math.round(n / 1024)) + " KB";
+$("imgQ").addEventListener("input", () => $("imgQv").textContent = $("imgQ").value);
+$("imgGo").addEventListener("click", () => {
+  const f = $("imgFile").files[0];
+  if (!f) { setOut("imgOut", "Choose an image first.", true); return; }
+  const url = URL.createObjectURL(f), img = new Image();
+  img.onload = () => {
+    let w = img.naturalWidth, h = img.naturalHeight;
+    const max = Number($("imgW").value);
+    if (max > 0 && w > max) { h = Math.round(h * max / w); w = max; }
+    const c = document.createElement("canvas"); c.width = w; c.height = h;
+    const x = c.getContext("2d"); x.fillStyle = "#fff"; x.fillRect(0, 0, w, h); x.drawImage(img, 0, 0, w, h);
+    c.toBlob(b => {
+      URL.revokeObjectURL(url);
+      if (!b) { setOut("imgOut", "Could not compress this image.", true); return; }
+      const out = URL.createObjectURL(b);
+      $("imgPrev").src = out; $("imgPrev").hidden = false;
+      $("imgDl").href = out; $("imgDl").hidden = false;
+      const saved = Math.round((1 - b.size / f.size) * 100);
+      setOut("imgOut", "Before: " + fmtSize(f.size) + "\nAfter: " + fmtSize(b.size) + " (" + w + " × " + h + " px)\n" + (saved > 0 ? "Saved " + saved + "%" : "No size saving. Try a lower quality."), false);
+    }, "image/jpeg", Number($("imgQ").value) / 100);
+  };
+  img.onerror = () => { URL.revokeObjectURL(url); setOut("imgOut", "This file is not a supported image.", true); };
+  img.src = url;
+});
+
+/* QR code */
+$("qrGo").addEventListener("click", () => {
+  const t = $("qrText").value.trim();
+  if (!t) { setOut("qrOut", "Enter some text first.", true); return; }
+  if (typeof qrcode === "undefined") { setOut("qrOut", "The QR library did not load. Check your connection and reload.", true); return; }
+  try {
+    if (qrcode.stringToBytesFuncs && qrcode.stringToBytesFuncs["UTF-8"]) qrcode.stringToBytes = qrcode.stringToBytesFuncs["UTF-8"];
+    const q = qrcode(0, "M"); q.addData(t); q.make();
+    const n = q.getModuleCount(), cv = $("qrCanvas"), cell = Math.floor(320 / (n + 8)), size = cell * (n + 8);
+    cv.width = cv.height = size;
+    const x = cv.getContext("2d"); x.fillStyle = "#fff"; x.fillRect(0, 0, size, size); x.fillStyle = "#000";
+    for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) if (q.isDark(r, c)) x.fillRect((c + 4) * cell, (r + 4) * cell, cell, cell);
+    cv.hidden = false; $("qrDl").href = cv.toDataURL("image/png"); $("qrDl").hidden = false;
+    setOut("qrOut", "QR code ready. Scan it to test.", false);
+  } catch { setOut("qrOut", "Text is too long for a QR code.", true); }
+});
+
+/* age */
+$("ageGo").addEventListener("click", () => {
+  const v = $("dob").value;
+  if (!v) { setOut("ageOut", "Pick a date of birth.", true); return; }
+  const b = new Date(v + "T00:00:00"), t = new Date(); t.setHours(0, 0, 0, 0);
+  if (b > t) { setOut("ageOut", "Date of birth is in the future.", true); return; }
+  let y = t.getFullYear() - b.getFullYear(), m = t.getMonth() - b.getMonth(), d = t.getDate() - b.getDate();
+  if (d < 0) { m--; d += new Date(t.getFullYear(), t.getMonth(), 0).getDate(); }
+  if (m < 0) { y--; m += 12; }
+  let nx = new Date(t.getFullYear(), b.getMonth(), b.getDate()); if (nx < t) nx = new Date(t.getFullYear() + 1, b.getMonth(), b.getDate());
+  const days = Math.round((nx - t) / 864e5), total = Math.round((t - b) / 864e5);
+  setOut("ageOut", y + " years, " + m + " months, " + d + " days\nTotal days lived: " + total.toLocaleString() + "\nNext birthday: " + (days === 0 ? "today" : "in " + days + " days"), false);
+});
+
+/* unit converter */
+const U = {
+  Length: { Millimetre: .001, Centimetre: .01, Metre: 1, Kilometre: 1000, Inch: .0254, Foot: .3048, Yard: .9144, Mile: 1609.344 },
+  Weight: { Gram: .001, Kilogram: 1, Pound: .45359237, Ounce: .028349523, "Ton (metric)": 1000, Maund: 37.3242 },
+  Volume: { Millilitre: .001, Litre: 1, "Gallon (US)": 3.785411784, Cup: .2365882 },
+  Area: { "Square metre": 1, "Square foot": .09290304, Decimal: 40.4685642, Katha: 66.89, Bigha: 1337.8, Acre: 4046.8564, Hectare: 10000 },
+  Temperature: { Celsius: 1, Fahrenheit: 1, Kelvin: 1 }
+};
+function unitFill() {
+  const names = Object.keys(U[$("uCat").value]);
+  [$("uFrom"), $("uTo")].forEach((s, i) => { s.innerHTML = names.map(n => "<option>" + n + "</option>").join(""); s.selectedIndex = Math.min(i, names.length - 1) === 0 && i === 1 ? 1 : i === 1 ? Math.min(2, names.length - 1) : 0; });
+  unitGo();
+}
+function unitGo() {
+  const raw = $("uVal").value; if (raw === "") { setOut("uOut", "Enter a value.", true); return; }
+  const v = Number(raw), cat = $("uCat").value, f = $("uFrom").value, t = $("uTo").value; let r;
+  if (cat === "Temperature") {
+    const c = f === "Celsius" ? v : f === "Fahrenheit" ? (v - 32) * 5 / 9 : v - 273.15;
+    r = t === "Celsius" ? c : t === "Fahrenheit" ? c * 9 / 5 + 32 : c + 273.15;
+  } else r = v * U[cat][f] / U[cat][t];
+  setOut("uOut", v + " " + f + " = " + Number(r.toPrecision(10)).toLocaleString(undefined, { maximumFractionDigits: 8 }) + " " + t, false);
+}
+$("uCat").addEventListener("change", unitFill);
+["uVal", "uFrom", "uTo"].forEach(id => $(id).addEventListener("input", unitGo));
+unitFill();
+
+/* loan EMI */
+$("emiGo").addEventListener("click", () => {
+  const P = Number($("lAmt").value), R = Number($("lRate").value) / 1200, N = Number($("lYears").value) * 12;
+  if (!(P > 0) || !(N > 0) || $("lRate").value === "" || R < 0) { $("emiStats").hidden = true; setOut("emiOut", "Enter a valid amount, rate and tenure.", true); return; }
+  const emi = R === 0 ? P / N : P * R * Math.pow(1 + R, N) / (Math.pow(1 + R, N) - 1), tot = emi * N;
+  const f = n => Math.round(n).toLocaleString();
+  $("emiM").textContent = f(emi); $("emiI").textContent = f(tot - P); $("emiT").textContent = f(tot);
+  $("emiStats").hidden = false; setOut("emiOut", "Over " + Math.round(N) + " months, interest adds " + ((tot - P) / P * 100).toFixed(1) + "% to the loan.", false);
+});
+
+/* percentage */
+function pct() {
+  const g = id => $(id).value === "" ? null : Number($(id).value), n = x => Number(x.toFixed(4)).toLocaleString(undefined, { maximumFractionDigits: 4 });
+  const [a1, b1, a2, b2, a3, b3] = ["a1", "b1", "a2", "b2", "a3", "b3"].map(g);
+  a1 !== null && b1 !== null ? setOut("r1", n(a1 / 100 * b1), false) : setOut("r1", "Result appears here.", true);
+  a2 !== null && b2 ? setOut("r2", n(a2 / b2 * 100) + "%", false) : setOut("r2", "Result appears here.", true);
+  a3 && b3 !== null ? setOut("r3", (b3 >= a3 ? "Increase of " : "Decrease of ") + n(Math.abs((b3 - a3) / a3 * 100)) + "%", false) : setOut("r3", "Result appears here.", true);
+}
+["a1", "b1", "a2", "b2", "a3", "b3"].forEach(id => $(id).addEventListener("input", pct));
+
+document.querySelectorAll("[data-open]").forEach(a => a.addEventListener("click", () => openTab($(a.dataset.open), true)));
+
+/* hero code rain */
+(function () {
+  const cv = $("rain"), x = cv.getContext("2d");
+  if (!x || reduceM) return;
+  const chars = "01ABCDEF<>{}/$#=+*", S = 16; let w, h, drops = [], run = true, last = 0;
+  function size() { w = cv.width = cv.offsetWidth; h = cv.height = cv.offsetHeight; drops = Array.from({ length: Math.floor(w / S) }, () => Math.random() * h / S); }
+  size(); window.addEventListener("resize", size);
+  new IntersectionObserver(e => run = e[0].isIntersecting).observe(cv);
+  function frame(t) {
+    requestAnimationFrame(frame);
+    if (!run || t - last < 75) return; last = t;
+    x.fillStyle = "rgba(10,15,28,.14)"; x.fillRect(0, 0, w, h);
+    x.font = "14px ui-monospace,Consolas,monospace"; x.fillStyle = "#38d9e8";
+    drops.forEach((y, i) => {
+      x.fillText(chars[Math.floor(Math.random() * chars.length)], i * S, y * S);
+      drops[i] = y * S > h && Math.random() > .96 ? 0 : y + 1;
+    });
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
